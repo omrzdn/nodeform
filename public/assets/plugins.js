@@ -1,14 +1,21 @@
+$(document).ready(function() {
+  var firstname, lastname;
+  $("#submit").click(function(e) {
+    e.preventDefault();
 
-      $(document).ready(function(){
-        var firstname,lastname;
-        $("#submit").click(function(){
-          firstname=$("#fn").val();
-          lastname=$("#ls").val();
-          $.post("http://localhost:3000/login",{firstname: fn,lastname: ln}, function(data){
-            if(data==='done')
-              {
-                alert("login success");
-              }
-          });
-        });
-      });
+    var data = {
+      firstname: $("#fn").val(),
+      lastname: $("#ln").val()
+    };
+    fetch("http://localhost:9000/form", {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(data)
+    }).then(res => {
+      console.log(res);
+    });
+  });
+});
