@@ -1,3 +1,6 @@
+var bodyparser = require('body-parser');
+var mongoose = require('mongoose');
+
 module.exports = function(app){
 
 app.get('/form', function(req, res){
@@ -5,9 +8,13 @@ app.get('/form', function(req, res){
   res.render('form');
 });
 
-app.get('/dashboard', function(req, res){
+app.post('/form', function(req, res){
 
-  res.render('dashboard');
+  var firstname = req.body.firstname;
+  var lastname = req.body.lastname;
+
+  console.log('your first name is ' + firstname +', and last name is ' + lastname);
+  res.end('yes');
 });
 
 app.delete('/test', function(res, req){
