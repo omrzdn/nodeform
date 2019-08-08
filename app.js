@@ -9,7 +9,7 @@ app.set("view engine", "ejs");
 //static files
 
 app.use(express.static("./public"));
-
+app.use(require('cors'));
 //fire controller
 
 formController(app);
